@@ -61,13 +61,13 @@ config :logger, :console,
 config :phoenix, :json_library, Jason
 
 config :ca_api,
-  # collective_access_base_url: "http://10.1.1.122/ca",
-  # ca_service_api_user: "administrator",
-  # ca_service_api_key: "P@ssw0rd"
+  collective_access_base_url: "http://10.1.1.122/ca_1.7",
+  ca_service_api_user: "administrator",
+  ca_service_api_key: "P@ssw0rd"
 
-  collective_access_base_url: "http://localhost/ca1.7.17",
-  ca_service_api_user: "admin",
-  ca_service_api_key: "h3r1tag3"
+  # collective_access_base_url: "http://localhost/ca1.7.17",
+  # ca_service_api_user: "admin",
+  # ca_service_api_key: "h3r1tag3"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
