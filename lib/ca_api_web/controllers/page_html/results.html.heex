@@ -1,0 +1,25 @@
+<html>
+    <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+        <div class="bg-white shadow-md rounded-lg p-6 w-full max-w-md">
+            <div class="mt-6">
+                <a href="/" class="text-blue-500 hover:text-blue-700">Back to Search</a>
+            </div>
+
+            <h1 class="text-2xl font-bold mb-4 text-center">Search Results</h1>
+    
+            <%= if length(@results) > 0 do %>
+            <ul class="space-y-4">
+                <%= for result <- @results do %>
+                <li class="bg-gray-50 p-4 rounded border border-gray-200">
+                    <strong class="text-gray-700">Label:</strong> <span class="text-gray-600"><%= result["display_label"] %></span><br>
+                    <strong class="text-gray-700">ID:</strong> <span class="text-gray-600"><%= result["id"] %></span><br>
+                    <strong class="text-gray-700">Object ID:</strong> <span class="text-gray-600"><%= result["object_id"] %></span>
+                </li>
+                <% end %>
+            </ul>
+            <% else %>
+            <p class="text-center text-gray-600">No results found.</p>
+            <% end %>
+        </div>
+    </body>
+</html>

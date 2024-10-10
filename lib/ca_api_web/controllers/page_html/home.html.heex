@@ -5,7 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Collective Access API GUI</title>
 </head>
-<body>
-  <h1>Hello World!</h1>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <div class="bg-white shadow-md rounded-lg p-8 w-full max-w-md">
+    <h1 class="text-2xl font-bold mb-6 text-center">Search CollectiveAccess</h1>
+
+    <form action="/submit" method="post">
+      <div class="mb-4">
+        <label for="hod_code" class="block text-gray-700 font-medium mb-2">HOD CODE:</label>
+        <input type="text" id="hod_code" name="hod_code" required class="border border-gray-300 rounded-md p-2 w-full">
+      </div>
+
+      <div class="mb-4">
+        <label for="hay_code" class="block text-gray-700 font-medium mb-2">HAY CODE:</label>
+        <input type="text" id="hay_code" name="hay_code" required class="border border-gray-300 rounded-md p-2 w-full">
+      </div>
+
+      <div class="mb-4">
+        <label for="piece_code" class="block text-gray-700 font-medium mb-2">PIECE CODE:</label>
+        <input type="text" id="piece_code" name="piece_code" required class="border border-gray-300 rounded-md p-2 w-full">
+      </div>
+
+      <div>
+        <button type="submit" class="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition duration-200">Search</button>
+      </div>
+    </form>
+  </div>
 </body>
 </html>
