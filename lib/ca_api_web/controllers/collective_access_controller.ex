@@ -4,7 +4,20 @@ defmodule CaApiWeb.CollectiveAccessController do
   alias CaApi.ItemService
 
   @doc """
-  Fetches an item from CollectiveAccess by Query.
+  Search for an item from CollectiveAccess using a Query.
+
+  ## Example
+
+    Request Body:
+    {"query": [ "OBJ_HODCODE:\"10\"", "OBJ_PIECECODE:\"635\"" ]}
+
+    Response on success:
+    {"ok": true,
+    "results": [
+    {"display_label": "label", "id":"1", "object_id":"1"}]}
+
+    Response on error:
+    {"error": Reason for failure}
   """
   def query_search(conn, _params) do
     %{"query" => query } = conn.body_params
