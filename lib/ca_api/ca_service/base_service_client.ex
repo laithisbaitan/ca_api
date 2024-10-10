@@ -17,8 +17,17 @@ defmodule CaApi.BaseServiceClient do
     params_with_token = Map.put(params, "authToken", token)
 
     url = build_url(service, table, params_with_token)
+    bundles = %{
+      "access" => %{"convertCodesToDisplayText" => true},
+      "status" => %{"convertCodesToDisplayText" => true},
+      "ca_objects.object_id" => %{},
+      "ca_objects.preferred_labels" => %{"returnAsArray" => true},
+      "ca_objects.unitdate.original" => %{"returnAsArray" => true},
+      "ca_objects.Custer_Upload.original" => %{"returnAsArray" => true}
+    }
+    body = prepare_body(bundles)
 
-    case HTTPoison.request(method, url, "", []) do
+    case HTTPoison.request(method, url, body, []) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         {:ok, parse_response(body)}
 
@@ -44,6 +53,14 @@ defmodule CaApi.BaseServiceClient do
           end
         "#{@base_url}/service.php/#{service}/#{table}/id/#{id_value}&noCache=1"
 
+    end
+  end
+
+  defp prepare_body(bundles) do
+    if Map.keys(bundles) == [] do
+      ""
+    else
+      Jason.encode!(%{"bundles" => bundles})
     end
   end
 
